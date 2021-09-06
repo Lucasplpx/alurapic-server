@@ -1,11 +1,12 @@
 import { ClassSerializerInterceptor, Module } from '@nestjs/common';
 import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
 import { FiltroDeExcecaoHttp } from './common/filtros/filtro-de-execao-http.filter';
+import { SentryModule } from './config/sentry/sentry.module';
 import { TransformaRespostaInterceptor } from './core/http/transforma-resposta.interceptor';
 import { UsuarioModule } from './usuario/usuario.module';
 
 @Module({
-  imports: [UsuarioModule],
+  imports: [UsuarioModule, SentryModule],
   controllers: [],
   providers: [
     {
