@@ -15,6 +15,7 @@ export class UsuarioController {
 
   @Post()
   cria(@Body() usuario: Usuario): Usuario {
+    // throw new Error('Erro no cadastro de usuário');
     const usuarioCriado = this.usuarioSevice.cria(usuario);
     return usuarioCriado;
   }
