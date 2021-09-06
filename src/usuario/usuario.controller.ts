@@ -4,6 +4,7 @@ import {
   Get,
   Header,
   HttpStatus,
+  NotFoundException,
   Param,
   Post,
 } from '@nestjs/common';
@@ -20,6 +21,12 @@ export class UsuarioController {
   buscaPorNomeDeUsuario(@Param('nomeDeUsuario') nomeDeUsuario: string) {
     const usuarioEncontrado =
       this.usuarioSevice.buscaPorNomeDeUsuario(nomeDeUsuario);
+    if (!usuarioEncontrado) {
+      throw new NotFoundException({
+        statusCode: HttpStatus.NOT_FOUND,
+        message: 'Usuário não encontrado',
+      });
+    }
     return usuarioEncontrado;
   }
 
