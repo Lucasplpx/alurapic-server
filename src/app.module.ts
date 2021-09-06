@@ -4,9 +4,10 @@ import { FiltroDeExcecaoHttp } from './common/filtros/filtro-de-execao-http.filt
 import { SentryModule } from './config/sentry/sentry.module';
 import { TransformaRespostaInterceptor } from './core/http/transforma-resposta.interceptor';
 import { UsuarioModule } from './usuario/usuario.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [UsuarioModule, SentryModule],
+  imports: [UsuarioModule, SentryModule, ConfigModule.forRoot()],
   controllers: [],
   providers: [
     {

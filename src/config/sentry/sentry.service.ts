@@ -8,7 +8,7 @@ export class SentryService {
 
   constructor() {
     Sentry.init({
-      dsn: '',
+      dsn: process.env.SENTRY_DNS,
     });
 
     this.isInit = true;
